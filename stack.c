@@ -2,17 +2,13 @@
 #include <stdlib.h>
 
 
-int push (int * stack, int pos){
-  int val = 0;
-  printf("Que valor desea ingresar?\n$ ");
-  scanf("%d",&val);
+void push (int * stack, int pos, int val){
   stack[pos] = val;
-  return val;
 }
 
 int pop (int * stack, int pos){
   int val = stack[pos];
-  stack[pos] = -9999;
+  stack[pos] = -2147483648;
   return val;
 }
 
@@ -21,12 +17,13 @@ int peek (int * stack, int pos){
   return val;
 }
 
-void print (int * stack){
+void print (int * stack, int max){
   int i;
-  for(i=4; i>=0; i--){
-    if(stack[i] == -9999)
-      printf("\n[   ]");
+  for(i=(max-1); i>=0; i--){
+    if(stack[i] == -2147483648)
+      printf("\n[\t \t]");
     else
-      printf("\n[ %d  ]",stack[i]);
+      printf("\n[\t%d\t]",stack[i]);
   }
+  printf("\n");
 }
